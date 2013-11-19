@@ -1,0 +1,19 @@
+WARNING: empty or missing file
++
+        outlook           $temp       $humidity           windy           =play            $_XX            $_yy             _ZZ    #      notes
+          sunny           73.57           81.64           FALSE             yes            0.41            0.37               0    #   expected
+           0.36            6.57           10.29            0.57            0.64            0.25            0.18            1.00    # certainity
+          sunny            85.0            85.0           FALSE              no             0.0             0.0               0    #
+          sunny            80.0            90.0            TRUE              no  0.306777308743  0.420194788526               0    #
+       overcast            83.0            86.0           FALSE             yes  0.290651594426  0.409938251462               0    #
+          rainy            70.0            96.0           FALSE             yes  0.266556853474  0.581357110843               0    #
+          rainy            68.0            80.0           FALSE             yes  0.382399267482  0.523551946051               0    #
+          rainy            65.0            70.0            TRUE              no  0.747861844629  0.475387007376               0    #
+       overcast            64.0            65.0            TRUE             yes  0.924152230657 0.000961328237762               0    #
+          sunny            72.0            95.0           FALSE              no   0.11116421379  0.330850530168               0    #
+          sunny            69.0            70.0           FALSE             yes   0.29055776004  0.345302304119               0    #
+          rainy            75.0            80.0           FALSE             yes  0.292226631846  0.477280399243               0    #
+          sunny            75.0            70.0            TRUE             yes  0.483784838979  0.362179995881               0    #
+       overcast            72.0            90.0            TRUE             yes  0.680349658953  0.373407245926               0    #
+       overcast            81.0            75.0           FALSE             yes  0.378344382238  0.376749772551               0    #
+          rainy            71.0            91.0            TRUE              no  0.552342584063  0.561599523113               0    #

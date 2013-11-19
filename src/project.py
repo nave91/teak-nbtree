@@ -6,8 +6,8 @@ def project(z,data):
     d  = anyi(data[z])
     if d == len(data[z]):
         d-=1
-    x = [None]*len(data[z])
-    y = [None]*len(data[z])
+    x = [0]*len(data[z])
+    y = [0]*len(data[z])
     east = furthest(d,data,z)
     west = furthest(data[z].index(east),data,z)
     inde = data[z].index(east)
