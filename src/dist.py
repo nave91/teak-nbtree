@@ -9,7 +9,7 @@ def dist(this,that,data,z,indep,nump):
         v2 = that[ind]
         if v1 == "?" and v2 == "?":
             tot+=1
-        elif k in nump:
+        elif k in nump[z]:
             aLittle = 0.0000001
             if v1 == "?":
                 v1 = 1 if v2 < 0.5 else 0
@@ -29,7 +29,7 @@ def dist(this,that,data,z,indep,nump):
                 tot += 1
             else:
                 tot += 0
-    ret = tot**0.5 / (len(indep))**0.5
+    ret = tot**0.5 / (len(indep[z]))**0.5
     return ret
 
 def closest(i,z,selfie,data):

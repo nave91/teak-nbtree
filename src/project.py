@@ -4,19 +4,19 @@ from sys import *
 from table import *
 def project(z,data):
     d  = anyi(data[z])
+    if d == len(data[z]):
+        d-=1
     x = [None]*len(data[z])
     y = [None]*len(data[z])
     east = furthest(d,data,z)
     west = furthest(data[z].index(east),data,z)
     inde = data[z].index(east)
     indw = data[z].index(west)
-    count = 1
     project0(inde,indw,data,z,x,y,count)
     return widen(z,x,y,more,less)
 
 def project0(east,west,data,z,x,y,count):
     print "+"
-    count+=1
     bigger = 1.05
     some = 0.000001
     c = dist(data[z][east],data[z][west],data,z,indep,nump)
@@ -28,7 +28,7 @@ def project0(east,west,data,z,x,y,count):
             return project0(east,ind,data,z,x,y,count)
         if a > c*bigger:
             return project0(ind,west,data,z,x,y,count)
-        print "."
+        #print "."
         x[ind] = (a**2 + c**2 - b**2) / (2*c + some)
         y[ind] = (a**2 - x[ind]**2)**0.5
 

@@ -12,4 +12,4 @@ def distedAll(csvfile,z):
         for j in range(0,len(data[z])):
             print dist(data[z][i],data[z][j],data,z,indep,nump)
 
-disted("weather")
+disted("diabetes")

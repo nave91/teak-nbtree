@@ -95,4 +95,5 @@ def pairs(lst):
     return tmp
 
 def anyi(lst):
-    return int(random()*len(lst)) + 1
+    tmp = random()
+    return int(tmp*len(lst)) + 1
