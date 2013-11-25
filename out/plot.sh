@@ -1,3 +1,6 @@
+#plots on a xy plane and converts it into pdf
+#usage sh plot.sh
+
 gnuplot<<EOF
 set terminal postscript eps color "Helvetica" 15
 set size 1,1

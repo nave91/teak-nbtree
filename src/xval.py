@@ -14,12 +14,11 @@ def xvals(data,x,b,f,z,k,m):
             xval(b1*s, (b1+1)*s, data, rows, f, z, k, m)
         x=x-1
 
-def  xval(start, stop, data, rows, f, z, k, m):
+def xval(start,stop,data,rows,f,z,k,m):
     rmax = len(rows)
     test = []
     hypotheses = {}
     temp = ""
-    #newddict(data,z)
     for r in range(0, rmax):
         d = rows[r]
         if r >= start and r < stop:

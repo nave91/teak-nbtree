@@ -17,18 +17,16 @@ class xy:
         i.xs+=xyz.x
         i.ys+=xyz.y
 
-    def tiles(i,more,mini,spy=True,lvl=0):
+    def tiles(i,more,mini,spy=False,lvl=0):
         n = len(i.kept)
         if n>mini:
             if n<more:
                 yield i.kept
             else:
-#                print "else"
                 if spy:
                     print '|--'*lvl+str(n)
                 xmu = i.xs*1.0/n
                 ymu = i.ys*1.0/n
-                print xmu,ymu
                 hh = i.__class__()
                 hl = i.__class__()
                 lh = i.__class__()
@@ -41,5 +39,4 @@ class xy:
                     what.keep(xyz)
                 for xy in [ll,lh,hl,hh]:
                     for one in xy.tiles(more,mini,spy,lvl+1):
- #                       print "heck"
                         yield one

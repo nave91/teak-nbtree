@@ -4,6 +4,25 @@ from sys import *
 from table import *
 from xy import *
 
+def leafprint(leaves):
+    for key,leaf in leaves.items():
+        print ""
+        print key
+        for i in leaf:
+            print "\t\t",i.row
+
+def leaftab(leaves):
+    ltab = {} #ltab is leaf tables with each leaf in ltab[0]..ltab[n]
+    for key,leaf in leaves.items():
+        ltab[key] = [0,0] #ltab[key][0] = xmu's [1]=ymu's
+        ilen = 0 #number of rows
+        for i in leaf:
+            ltab[key][0]+=i.x
+            ltab[key][1]+=i.y
+            ilen+=1
+        ltab[key][0] = ltab[key][0]/ilen
+        ltab[key][1] = ltab[key][1]/ilen
+    return ltab
 
 def xy_proj(z,data):
     xyobj = xy()
@@ -22,11 +41,12 @@ def xy_proj(z,data):
     for n,leaf in enumerate(xyobj.tiles(20,4)):
         #print leaf
         leaves[n] = leaf
-#    for key,leaf in leaves.items():
-#        print ""
-#        print key
-#        for i in leaf:
-#            print i.row,
+    #leafprint(leaves)
+    ltab = leaftab(leaves)
+    for key,leaf in ltab.items():
+        print leaf[0],leaf[1]
+            
+    
 
 def xy_proj0(east,west,c,data,z,x,y,count):
     print "+"
