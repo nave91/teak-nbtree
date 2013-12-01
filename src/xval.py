@@ -11,7 +11,7 @@ def xvals(data,x,b,f,z,k,m):
     while x>0:
         shuffled(rows)
         for b1 in range(0,b):
-            xval(b1*s, (b1+1)*s, data, rows, f, z, k, m)
+            xval(b1*s,(b1+1)*s,data,rows,f,z,k,m)
         x=x-1
 
 def xval(start,stop,data,rows,f,z,k,m):

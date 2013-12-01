@@ -12,6 +12,7 @@ def nb(test,data,hypotheses,z,k,m):
     where = klassAt(z)
     for t in test:
         want = t[where]
+        #do something here to change data
         got = likelyhood(t,data,total,hypotheses,l,z,k,m)
         if want == got:
             acc+=1.0

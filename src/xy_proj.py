@@ -27,6 +27,7 @@ def leaftab(leaves):
 def xy_proj(z,data):
     xyobj = xy()
     d  = anyi(data[z])
+    print len(data[z]),"lennnn"
     if d == len(data[z]):
         d-=1
     x = [0]*len(data[z])

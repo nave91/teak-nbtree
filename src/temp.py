@@ -1,9 +1,5 @@
-class temp:
-    def __init__(i):
-        i.var = 0
-    def heck(i):
-        j = temp()
-        print j.var
+x = 0.12345
+y = 0.12345
 
-obj = temp()
-obj.heck()
+if x == y:
+    print "same"

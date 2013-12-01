@@ -7,16 +7,18 @@ def dist(this,that,data,z,indep,nump):
         ind = colname[z].index(k)
         v1 = this[ind]
         v2 = that[ind]
+        #print ">","v1",v1,"v2",v2
         if v1 == "?" and v2 == "?":
             tot+=1
         elif k in nump[z]:
             aLittle = 0.0000001
+            mid = (hi[z][k] - lo[z][k])/2
             if v1 == "?":
-                v1 = 1 if v2 < 0.5 else 0
+                v1 = 1 if v2 < mid else 0
             else:
                 v1 = (v1 - lo[z][k])/ (hi[z][k] - lo[z][k] + aLittle)
             if v2 == "?":
-                v2 = 1 if v1 < 0.5 else 0
+                v2 = 1 if v1 < mid else 0
             else:
                 v2 = (v2 - lo[z][k])/ (hi[z][k] - lo[z][k] + aLittle)
             tot += (v2-v1)**2

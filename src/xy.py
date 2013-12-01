@@ -1,5 +1,4 @@
 #! /usr/env python
-
 class row:
     def __init__(i,row):
         i.row = row
@@ -17,10 +16,11 @@ class xy:
         i.xs+=xyz.x
         i.ys+=xyz.y
 
-    def tiles(i,more,mini,spy=False,lvl=0):
+    def tiles(i,more,mini,spy=True,lvl=0):
         n = len(i.kept)
         if n>mini:
             if n<more:
+                #print i.kept
                 yield i.kept
             else:
                 if spy:
@@ -31,11 +31,21 @@ class xy:
                 hl = i.__class__()
                 lh = i.__class__()
                 ll = i.__class__()
+                same = i.__class__()
                 for xyz in i.kept:
+                    if xyz.x/xmu ==  1.0:
+                        print "same"
+
                     if xyz.x < xmu:
-                        what = ll if xyz.x < ymu else lh
+                        if xyz.y < ymu:
+                            what = ll
+                        else:
+                            what = lh
                     else:
-                        what = hl if xyz.x < ymu else hh
+                        if xyz.y < ymu:
+                            what = hl
+                        else:
+                            what = hh
                     what.keep(xyz)
                 for xy in [ll,lh,hl,hh]:
                     for one in xy.tiles(more,mini,spy,lvl+1):
