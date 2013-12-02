@@ -3,39 +3,11 @@ from dist import *
 from sys import *
 from table import *
 from xy import *
-
-def leafprint(leaves):
-    for key,leaf in leaves.items():
-        print ""
-        print key
-        for i in leaf:
-            stri = ''
-            for j in i.row:
-                stri +=str(j)+","
-            print "\t\t"+stri
-
-def leaftab(leaves):
-    ltab = {} #ltab is leaf tables with each leaf in ltab[0]..ltab[n]
-    for key,leaf in leaves.items():
-        ltab[key] = [0,0] #ltab[key][0] = xmu's [1]=ymu's
-        ilen = 0 #number of rows
-        for i in leaf:
-            ltab[key][0]+=i.x
-            ltab[key][1]+=i.y
-            ilen+=1
-        ltab[key][0] = ltab[key][0]/ilen
-        ltab[key][1] = ltab[key][1]/ilen
-    return ltab
-
-def printltab(ltab):
-    for key,leaf in ltab.items():
-        print key,leaf[0],leaf[1]
-    
+from xy_lib import *
 
 def xy_proj(z,data,t):
     xyobj = xy()
     d  = anyi(data[z])
-    print len(data[z]),"lennnn"
     if d == len(data[z]):
         d-=1
     x = [0]*len(data[z])
@@ -52,7 +24,10 @@ def xy_proj(z,data,t):
         leaves[n] = leaf
     #leafprint(leaves)
     ltab = leaftab(leaves)
-    printltab(ltab)
+    #printltab(ltab)
+    close = nearleaf(ltab,xyobj)
+    print close
+    
     
 def xy_proj0(t,east,west,c,data,z,x,y,count):
     print "+"

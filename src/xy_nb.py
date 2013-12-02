@@ -4,20 +4,11 @@ from reader import *
 from xval import *
 from math import *
 
-def nb(test,data,hypotheses,z,k,m):
-    total = 0.0
-    acc = 0.0
-    for h in hypotheses:
-        total += len(data[h])
-    where = klassAt(z)
-    for t in test:
-        want = t[where]
-        got = likelyhood(t,data,total,hypotheses,l,z,k,m)
-        if want == got:
-            acc+=1.0
-    print '%0.2f' % round(100*acc/len(test),2),
+def xy_nb(t,data,hypotheses,total,z,k,m):
+    got = likelyhood(t,data,total,hypotheses,l,z,k,m)
+    return got
 
-def likelyhood(t,data,total,hypotheses,l,z,k,m):
+def xy_likelyhood(t,data,total,hypotheses,l,z,k,m):
     like = -0.1*10**23
     best = ''
     total += k*len(hypotheses)
