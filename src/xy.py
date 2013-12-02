@@ -10,11 +10,15 @@ class xy:
         i.xs=0
         i.ys=0
         i.kept=[]
+        i.trow = row([])
 
     def keep(i,xyz):
         i.kept+=[xyz]
         i.xs+=xyz.x
         i.ys+=xyz.y
+    
+    def addtrow(i,test):
+        i.trow = test
 
     def tiles(i,more,mini,spy=True,lvl=0):
         n = len(i.kept)

@@ -10,7 +10,7 @@ def xy_projed():
     csvfile = open('../data/'+argv[1]+'.csv','r')
     readCsv(csvfile,argv[2])
     #tableprint(argv[2])
-    xy_proj(argv[2],data)
+    xy_proj(argv[2],data,4)
     #tableprint(w)
 
 xy_projed()
