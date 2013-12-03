@@ -45,7 +45,13 @@ PS: I will be using xy-plane instead of a 2D-plane</p>
 <h2>
 <a name="hypothesis" class="anchor" href="#hypothesis"><span class="octicon octicon-link"></span></a>Hypothesis</h2>
 
-<p>A table can be mapped onto an xy plane</p>
+<p>A table can be mapped onto an xy plane using:
+<code>
+row = any(data)
+east = furthest(row)
+west = furthest(east)
+for each row r in data:
+</code></p>
 
 <h2>
 <a name="data" class="anchor" href="#data"><span class="octicon octicon-link"></span></a>Data</h2>
