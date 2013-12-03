@@ -28,37 +28,156 @@
         </ul>
       </header>
       <section>
-        <h1>
-<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h1>
+        <h2>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>Teak acronym for "Test Essential Assumption Knowledge". <a href="http://menzies.us/pdf/11teak.pdf">Know More</a></p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p>Essentially--<em>Assume something, Focus on it, Prune rest and predict</em></p>
+
+<p>Nb-Tree is tree of tables as leaves. Each leaf has a naive bayes classifies running on its table of data. 
+We can also run naive bayes on nodes(i.e. running on all of its child leaves)</p>
+
+<p><strong>Assumption</strong> : When a table is mapped on to an xy-plane. Similar rows are located closely to each other.</p>
+
+<p>Note:In above sentence, closely refers to eucledian distance between two rows on an xy plane. </p>
+
+<p>PS: I will be using xy-plane instead of a 2D-plane</p>
+
+<h2>
+<a name="hypothesis" class="anchor" href="#hypothesis"><span class="octicon octicon-link"></span></a>Hypothesis</h2>
+
+<p>A table can be mapped onto an xy plane using this pretty little code:</p>
+
+<pre><code>row = any(data)
+east = furthest(row)
+west = furthest(east)
+c = dist(east,west)
+for each row r in data:
+    a = dist(r,east)
+    b = dist(r,west)
+    x = (a^2 + c^2 - b^2)/2c
+    y = (a^2 + x^2)^0.5    
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Similar rows are grouped aka they are close to each other on the xy-plane.</p>
+
+<p>+We can increase the effectiveness of naive-bayes classifier by running it only on those similar rows that are close to the <em>row that is to be predicted</em>. 
++In order to increase efficiency of nb-tree, for a set of test rows I will generate a tree only once and get a list of tables(or leaves).
++Efficiency will be considerably increased as we only need to measure distance between a row and a list of rows.
++Then, I will determine which leaf is closest to each given test row.
++Run a naive bayes classifier on it to get the accuracy.</p>
+
+<p>Shown as:</p>
+
+<pre><code>for each row "t" in test:
+        Using cosine and Pythagoras, map the training data on xy plane.
+        tx,ty&lt;----------Also map test row "t" on that same xy plane.
+        run xy.tiles to build a tree and get a set of leaves(tables)
+        xy_means_of_leaves=calculate mean of x and y in each leaf
+        nearest_leaf = least_eucledian_distance(each(xy_means_of_leaves) and (tx,ty))  
+        Run nb on nearest_leaf and calculate accuracy
+</code></pre>
+
+<h2>
+<a name="data" class="anchor" href="#data"><span class="octicon octicon-link"></span></a>Data</h2>
+
+<p>I used <code>diabetes</code> and <code>iris</code> to test my hypothesis. Other datasets are on their way. Lot of preprocessing needs to be done.</p>
+
+<p>Initial projection of <a href="https://github.com/nave91/teak-nbtree/blob/master/data/diabetes.csv">diabetes</a> on xy-plane:</p>
+
+<p><img src="https://raw.github.com/nave91/teak-nbtree/gh-pages/images/initial_dia.jpg" alt="diabetes"></p>
+
+<p>After generating leaves, xy projection of mean of each leafs:</p>
+
+<p><img src="https://raw.github.com/nave91/teak-nbtree/gh-pages/images/leaf_dia.jpg" alt="diabetes"></p>
+
+<p>Initial projection of <a href="https://github.com/nave91/teak-nbtree/blob/master/data/diabetes.csv">iris</a> on xy-plane:</p>
+
+<p><img src="https://raw.github.com/nave91/teak-nbtree/gh-pages/images/initial_iris.jpg" alt="diabetes"></p>
+
+<p>After generating leaves, xy projectin of mean of each leafs:</p>
+
+<p><img src="https://raw.github.com/nave91/teak-nbtree/gh-pages/images/leaf_iris.jpg" alt="diabetes"></p>
+
+<h2>
+<a name="analysis" class="anchor" href="#analysis"><span class="octicon octicon-link"></span></a>Analysis</h2>
+
+<pre><code>&gt;&gt;close 10
++test: [6.1, 2.8, 4.7, 1.2, '2']
+closest leaf: 10 : [[6.2, 2.2, 4.5, 1.5, '2'], [6.3, 3.3, 4.7, 1.6, '2'], [6.0, 2.2, 4.0, 1.0, '2'], [5.4, 3.0, 4.5, 1.5, '2'], [5.9, 3.0, 5.1, 1.8, '3'], [7.0, 3.2, 4.7, 1.4, '2'], [5.8, 2.7, 5.1, 1.9, '3'], [5.9, 3.2, 4.8, 1.8, '2'], [5.5, 2.3, 4.0, 1.3, '2'], [6.0, 3.4, 4.5, 1.6, '2'], [5.8, 2.7, 5.1, 1.9, '3'], [6.0, 2.2, 5.0, 1.5, '3']] len: 12
+0.26461058269 norm value for $sepallength
+1.08565813063 norm value for $sepalwidth
+5.43565621149e-12 norm value for $petallength
+0.0209937597598 norm value for $petalwidth
+0.794035419022 norm value for $sepallength
+0.75813597268 norm value for $sepalwidth
+0.963579623489 norm value for $petallength
+0.913012880861 norm value for $petalwidth
+likelyhood: {'3': -33.02818692221201, '2': -2.3785944862966026}
+want: 2 got: 2
+</code></pre>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="there-is-a-problem" class="anchor" href="#there-is-a-problem"><span class="octicon octicon-link"></span></a>There is a problem</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>If the dataset has a low frequency class values, then accuracy might not be a good factor for evaluation.</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p>We need to use "precision" and "recall" which are class specific and can be used to evaluate predictors.</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>Remember <a href="https://github.com/nave91/teak-nbtree/blob/master/src/abcd.py">Abcd.py</a></p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<h2>
+<a name="results" class="anchor" href="#results"><span class="octicon octicon-link"></span></a>Results</h2>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>After running the hypothesis for accuracy, the output is as follows:</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<p>Diabetes:</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<pre><code>nb
+67.97 68.63 69.28 69.93 71.24 71.24 72.55 73.2 73.86 73.86 74.51 74.51 74.51 74.51 75.16 75.82 75.82 76.47 77.12 77.12 77.12 77.78 81.05 81.05 82.35 
+
+nb-tree
+39.87 41.83 42.48 43.14 43.14 45.75 46.41 47.06 47.71 48.37 49.67 50.33 50.33 50.98 50.98 50.98 50.98 51.63 51.63 52.29 52.29 54.25 54.25 54.25 54.9
+
+</code></pre>
+
+<p>Iris:</p>
+
+<pre><code>nb
+86.67 90.0 90.0 90.0 93.33 93.33 93.33 93.33 93.33 93.33 93.33 96.67 96.67 96.67 96.67 96.67 96.67 100.0 100.0 100.0 100.0 100.0 100.0 100.0 100.0
+
+nb-tree
+73.33 73.33 73.33 73.33 73.33 76.67 76.67 76.67 80.0 80.0 80.0 83.33 83.33 86.67 86.67 86.67 86.67 86.67 86.67 90.0 90.0 93.33 93.33 93.33 93.33
+
+</code></pre>
+
+<h2>
+<a name="discussion" class="anchor" href="#discussion"><span class="octicon octicon-link"></span></a>Discussion</h2>
+
+<p>As we can observe, the effectiveness of naive bayes is decreased when the hypothesis is implemented.</p>
+
+<p>Many cases are possible:</p>
+
+<p>1.Our initial assumption that similar rows are closer on xy-plane may or may not be true.
+2.The naive bayes is implemented on leaves rather than on nodes which may be decreasing it accuracy.
+3.In other words, the leaf that we consider as closest for a test row may not be so close?
+4.Low frequency class problem?
+5.Datasets are not effective.</p>
+
+<h2>
+<a name="future-work" class="anchor" href="#future-work"><span class="octicon octicon-link"></span></a>Future work</h2>
+
+<p>I would like to test the hypothesis by running naive bayes at nodes instead of leaves by recursively traversing the tree till I get a good node of similar rows.</p>
+
+<p>Also, as the hypotheses is tested only on 2 datasets, I would like to test it on varying sets of data and check its effectiveness.</p>
+
+<p>I would also try to calculate "precision" and "recall" to better evaluate predictors and eliminate low frequency class problem.</p>
+
+<h2>
+<a name="conclusion" class="anchor" href="#conclusion"><span class="octicon octicon-link"></span></a>Conclusion</h2>
+
+<p>The naive bayes tree may not be effective when predictor is run on leaves of tree. The assumption that nb is more effective when it is run on similar data may not hold true.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/nave91">nave91</a></p>
