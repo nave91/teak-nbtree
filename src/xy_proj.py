@@ -24,7 +24,7 @@ def xy_proj(z,data,t,tz):
         leaves[n] = leaf
     ltab = leaftab(leaves)
     close = nearleaf(ltab,xyobj)
-    #checkie(leaves,ltab,close,data,tz,t)
+    checkie(leaves,ltab,close,data,tz,t)
     return out_reduced(leaves,close)
 
 def xy_proj0(t,east,west,c,data,z,x,y,count,tz):

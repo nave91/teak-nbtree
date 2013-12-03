@@ -18,7 +18,7 @@ def xy_xvals(data,x,b,f,z,k,m):
     for i in sorted(acc):
         print i,
 
-def xy_xval(start,stop,data,rows,f,z,k,m,check=False):
+def xy_xval(start,stop,data,rows,f,z,k,m,check=True):
     rmax = len(rows)
     test = []
     hypotheses = {}
@@ -40,7 +40,7 @@ def xy_xval(start,stop,data,rows,f,z,k,m,check=False):
         for r in range(0,len(dafter)):
             d = dafter[r]
             addRow(d,l)
-            if check ==True: tableprint(l) #print each leaf table
+            #if check ==True: tableprint(l) #print each leaf table
         hypotheses = hypbuild(data,l)
         where = klassAt(l)
         total = 0.0
@@ -48,9 +48,9 @@ def xy_xval(start,stop,data,rows,f,z,k,m,check=False):
             total += len(data[h])
         want = ts[where]
         got = xy_nb(ts,data,hypotheses,total,l,k,m)
-        if check == True: print want,got #check what we are expecting and getting
+        if check == True: print "want:",want,"got:",got #check what we are expecting and getting
         if want == got: acc+=1.0
-        #sys.exit()
+        sys.exit()
     return round(100*acc/len(test),2)
     #print '%0.2f' % round(100*acc/len(test),2),
 

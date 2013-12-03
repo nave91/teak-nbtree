@@ -8,7 +8,7 @@ def xy_nb(t,data,hypotheses,total,z,k,m):
     got = xy_likelyhood(t,data,total,hypotheses,z,k,m)
     return got
 
-def xy_likelyhood(t,data,total,hypotheses,z,k,m,check=False):
+def xy_likelyhood(t,data,total,hypotheses,z,k,m,check=True):
     like = -0.1*10**23
     best = ''
     total += k*len(hypotheses)
@@ -37,9 +37,9 @@ def xy_likelyhood(t,data,total,hypotheses,z,k,m,check=False):
             if y == 0 or y > 1.0: y=1.0
             tmp += log(y)
         l[h] = tmp
-        if check == True: print "like:",like,"tmp:",tmp
+        #if check == True: print "like:",like,"tmp:",tmp
         if tmp >= like:
             like = tmp;
             best = h
-    if check == True: print l,"likelyhood"
+    if check == True: print "likelyhood:",l
     return best
