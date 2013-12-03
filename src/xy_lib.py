@@ -1,4 +1,6 @@
 #library for xy_*.py
+from table import *
+from reader import *
 
 def leafprint(leaves):
     for key,leaf in leaves.items():
@@ -24,6 +26,7 @@ def leaftab(leaves):
     return ltab
 
 def printltab(ltab):
+    print "leaf tables mean x and y"
     for key,leaf in ltab.items():
         print key,leaf[0],leaf[1]
 
@@ -34,15 +37,38 @@ def eucldist(leaf,xyobj):
     return (d1+d2)**0.5
 
 def nearleaf(ltab,xyobj):
+    #print "distances from test row to leaves"
     small = 10**23
     smallind = 0
     for key,leaf in ltab.items():
         tmp = eucldist(leaf,xyobj)
-        print key,tmp
+        #print key,tmp
         if tmp < small:
             small = tmp
             smallind = key
     return smallind
         
+def out_reduced(leaves,close):
+    tmp = []
+    for i in leaves[close]:
+        tmp.append(i.row)
+    return tmp
 
+
+def hypbuild(data,z):
+    hypotheses = {}
+    for d in data[z]:
+        temp = klass1(d, z)
+        try:
+            hypotheses[temp] += 1
+            if hypotheses[temp] == 1:
+                makeTable(colname[z],temp)
+            addRow(d,temp)
+        except KeyError:
+            hypotheses[temp] = 1
+            if hypotheses[temp] == 1:
+                makeTable(colname[z],temp)
+            addRow(d,temp)
+    return hypotheses
+   
 

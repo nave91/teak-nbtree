@@ -20,7 +20,7 @@ class xy:
     def addtrow(i,test):
         i.trow = test
 
-    def tiles(i,more,mini,spy=True,lvl=0):
+    def tiles(i,more,mini,spy=False,lvl=0):
         n = len(i.kept)
         if n>mini:
             if n<more:

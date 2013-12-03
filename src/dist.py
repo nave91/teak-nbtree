@@ -47,7 +47,7 @@ def closest(i,z,selfie,data):
     return out
 
 def furthest(i,data,z):
-    maxi = 0.0001
+    maxi = -1
     out = 0
     for j in data[z]:
         d = dist(data[z][i],j,data,z,indep,nump)

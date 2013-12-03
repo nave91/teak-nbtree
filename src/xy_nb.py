@@ -5,7 +5,7 @@ from xval import *
 from math import *
 
 def xy_nb(t,data,hypotheses,total,z,k,m):
-    got = likelyhood(t,data,total,hypotheses,l,z,k,m)
+    got = xy_likelyhood(t,data,total,hypotheses,l,z,k,m)
     return got
 
 def xy_likelyhood(t,data,total,hypotheses,l,z,k,m):

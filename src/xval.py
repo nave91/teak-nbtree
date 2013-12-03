@@ -8,11 +8,14 @@ from nb import *
 def xvals(data,x,b,f,z,k,m):
     rows = indexes(data,z)
     s = int(len(rows)/b)
+    acc = []
     while x>0:
         shuffled(rows)
         for b1 in range(0,b):
-            xval(b1*s,(b1+1)*s,data,rows,f,z,k,m)
+            acc.append(xval(b1*s,(b1+1)*s,data,rows,f,z,k,m))
         x=x-1
+    for i in sorted(acc):
+        print i,
 
 def xval(start,stop,data,rows,f,z,k,m):
     rmax = len(rows)
@@ -21,7 +24,6 @@ def xval(start,stop,data,rows,f,z,k,m):
     temp = ""
     for r in range(0, rmax):
         d = rows[r]
-        print d
         if r >= start and r < stop:
             test.append(d)
         else:
@@ -38,7 +40,7 @@ def xval(start,stop,data,rows,f,z,k,m):
                 addRow(d,temp)
     #zeror(test, data, hypotheses, z) 
     #xvalTest1(test,data,hypotheses)
-    nb(test,data,hypotheses,z,k,m)
+    return nb(test,data,hypotheses,z,k,m)
 
 
 def xvalTest1(test,data,hypotheses):

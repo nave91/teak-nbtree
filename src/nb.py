@@ -15,7 +15,8 @@ def nb(test,data,hypotheses,z,k,m):
         got = likelyhood(t,data,total,hypotheses,l,z,k,m)
         if want == got:
             acc+=1.0
-    print '%0.2f' % round(100*acc/len(test),2),
+    return round(100*acc/len(test),2)
+    #print '%0.2f' % round(100*acc/len(test),2),
 
 def likelyhood(t,data,total,hypotheses,l,z,k,m):
     like = -0.1*10**23
