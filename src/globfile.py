@@ -41,6 +41,4 @@ isnum = True
 #
 hypotheses = {}
 #
-#for naive bayes
-l = {} #dictionary of likelyhood
 #

@@ -5,13 +5,14 @@ from xval import *
 from math import *
 
 def xy_nb(t,data,hypotheses,total,z,k,m):
-    got = xy_likelyhood(t,data,total,hypotheses,l,z,k,m)
+    got = xy_likelyhood(t,data,total,hypotheses,z,k,m)
     return got
 
-def xy_likelyhood(t,data,total,hypotheses,l,z,k,m):
+def xy_likelyhood(t,data,total,hypotheses,z,k,m,check=False):
     like = -0.1*10**23
     best = ''
     total += k*len(hypotheses)
+    l = {}
     for h in hypotheses:
         nh = len(data[h])*0.1
         prior = (nh+k) / total
@@ -32,10 +33,13 @@ def xy_likelyhood(t,data,total,hypotheses,l,z,k,m):
             if x == '?':
                 continue
             y = norm(x, mu[h][c], sd[h][c])
+            if check == True: print y,"norm value for",c
             if y == 0 or y > 1.0: y=1.0
             tmp += log(y)
         l[h] = tmp
+        if check == True: print "like:",like,"tmp:",tmp
         if tmp >= like:
             like = tmp;
             best = h
+    if check == True: print l,"likelyhood"
     return best

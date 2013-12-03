@@ -71,4 +71,11 @@ def hypbuild(data,z):
             addRow(d,temp)
     return hypotheses
    
+def checkie(leaves,ltab,close,data,tz,t):
+    #printltab(ltab)
+    #leafprint(leaves)
+    print ">>close",close
+    print "+test:",data[tz][t]
+    print "closest leaf:",close,":",out_reduced(leaves,close),"len:",len(leaves[close])
 
+    

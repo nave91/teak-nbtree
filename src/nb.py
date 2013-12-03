@@ -12,16 +12,17 @@ def nb(test,data,hypotheses,z,k,m):
     where = klassAt(z)
     for t in test:
         want = t[where]
-        got = likelyhood(t,data,total,hypotheses,l,z,k,m)
+        got = likelyhood(t,data,total,hypotheses,z,k,m)
         if want == got:
             acc+=1.0
     return round(100*acc/len(test),2)
     #print '%0.2f' % round(100*acc/len(test),2),
 
-def likelyhood(t,data,total,hypotheses,l,z,k,m):
+def likelyhood(t,data,total,hypotheses,z,k,m):
     like = -0.1*10**23
     best = ''
     total += k*len(hypotheses)
+    l = {}
     for h in hypotheses:
         nh = len(data[h])*0.1
         prior = (nh+k) / total

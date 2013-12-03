@@ -22,11 +22,9 @@ def xy_proj(z,data,t,tz):
     for n,leaf in enumerate(xyobj.tiles(20,4)):
         #print leaf
         leaves[n] = leaf
-    #leafprint(leaves)
     ltab = leaftab(leaves)
-    #printltab(ltab)
     close = nearleaf(ltab,xyobj)
-    #print ">>close",close
+    #checkie(leaves,ltab,close,data,tz,t)
     return out_reduced(leaves,close)
 
 def xy_proj0(t,east,west,c,data,z,x,y,count,tz):
