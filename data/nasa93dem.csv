@@ -1,4 +1,4 @@
-?id, 
+?id,
 center,
 ?$year,
 prec, #{h}
@@ -16,7 +16,7 @@ stor, #{n,h,vh,xh}
 pvol, #{l,n,h}
 acap, #{n,h,vh}
 pcap, #{n,h,vh}
-pcon, #{n} 
+pcon, #{n}
 apex, #{l,n,h,vh}
 plex, #{vl,l,n,h}
 ltex, #{vl,l,n,h}

@@ -3,7 +3,7 @@ from reader import *
 from sys import argv
 from table import *
 def projected():
-    projected1("data/automsg.csv")
+    projected1("data/diabetes.csv")
 
 def projected1(f):
     csvfile = open('../data/'+argv[1]+'.csv','r')

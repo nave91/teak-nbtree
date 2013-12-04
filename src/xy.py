@@ -22,9 +22,11 @@ class xy:
 
     def tiles(i,more,mini,spy=False,lvl=0):
         n = len(i.kept)
+        scount = 0
         if n>mini:
             if n<more:
-                #print i.kept
+#                for j in i.kept:
+#                    print j.row
                 yield i.kept
             else:
                 if spy:
@@ -35,10 +37,17 @@ class xy:
                 hl = i.__class__()
                 lh = i.__class__()
                 ll = i.__class__()
-                same = i.__class__()
+#                same = i.__class__()
+#                print xmu,ymu
                 for xyz in i.kept:
-                    if xyz.x/xmu ==  1.0:
-                        print "same"
+#                    print scount
+#                    if xyz.x != 0 and xyz.y != 0:
+#                        if int(xmu/xyz.x+ymu/xyz.y) == int(2.0):                            
+#                            print "same"
+#                            scount+=1
+#                    if scount == 16:
+#                        yield i.kept
+#                        scount = 0
 
                     if xyz.x < xmu:
                         if xyz.y < ymu:

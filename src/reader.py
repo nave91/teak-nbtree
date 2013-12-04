@@ -41,7 +41,7 @@ def makeTable(lst,z):
             morechk = re.match('\+.*$',csvcol)
             lesschk = re.match('-.*$',csvcol)
             numchk = re.match('\$.*$',csvcol)
-            if klasschk or klasschk1 or klasschk2 or klasschk3:
+            if klasschk or klasschk1 or klasschk2:
                 dep[z].append(csvcol)
                 klass[z].append(csvcol)
                 isnum = False

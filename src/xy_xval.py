@@ -18,7 +18,7 @@ def xy_xvals(data,x,b,f,z,k,m):
     for i in sorted(acc):
         print i,
 
-def xy_xval(start,stop,data,rows,f,z,k,m,check=True):
+def xy_xval(start,stop,data,rows,f,z,k,m,check=False):
     rmax = len(rows)
     test = []
     hypotheses = {}
@@ -50,7 +50,7 @@ def xy_xval(start,stop,data,rows,f,z,k,m,check=True):
         got = xy_nb(ts,data,hypotheses,total,l,k,m)
         if check == True: print "want:",want,"got:",got #check what we are expecting and getting
         if want == got: acc+=1.0
-        sys.exit()
+        #sys.exit()
     return round(100*acc/len(test),2)
     #print '%0.2f' % round(100*acc/len(test),2),
 

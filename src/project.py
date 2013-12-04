@@ -42,6 +42,7 @@ def widen(z,x,y,more,less):
     makeTable(adds,w)
     for d in data[z]:
         ind = data[z].index(d)
+        hell = fromHell(data[z][ind],z,more,less)
         wider = data[z][ind]
         wider.extend([x[ind]])
         wider.extend([y[ind]])

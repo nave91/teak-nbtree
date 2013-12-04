@@ -29,18 +29,18 @@ def klassAt(z):
 def fromHell(row,z,more,less):
     m = 0
     out = 0
-    for c in more:
-        print more,"mooreeee"
-        print colname,"colname"
-        print c,"ccccccccc"
-        print row,"rowww"
-        ind = colname[z].index(c)
-        if row[ind] != '?':
-            m+=1
-            out += ((row[ind] - hi[z][ind]) / (hi[z][ind] - lo[z][ind] + aLittle))**2
-    for c in less:
-        ind = colname[z].index(c)
-        if row[ind] != '?':
-            m+=1
-            out += ((row[ind] - hi[z][ind])/ (hi[z][ind] - lo[z][ind] + aLittle))**2
+    aLittle = 0.001
+    if z in more:
+        for c in more[z]:
+            ind = colname[z].index(c)
+            if row[ind] != '?':
+                m+=1
+                print ind,z
+                out += ((row[ind] - hi[z][c]) / (hi[z][c] - lo[z][c] + aLittle))**2
+    if z in less:
+        for c in less[z]:
+            ind = colname[z].index(c)
+            if row[ind] != '?':
+                m+=1
+                out += ((row[ind] - hi[z][c])/ (hi[z][c] - lo[z][c] + aLittle))**2
     return out**0.5/m**5 if m == 1 else 1
