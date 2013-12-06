@@ -21,6 +21,7 @@ def xy_proj(z,data,t,tz,check):
     leaves = {}
     for n,leaf in enumerate(xyobj.tiles(20,4,0)):
         leaves[n] = leaf
+    #if check == True: leafprint(leaves)
     if check == True: print "test row:",xyobj.trow.x,xyobj.trow.y
     ltab = leaftab(leaves)
     if check == True: printltab(ltab)

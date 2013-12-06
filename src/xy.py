@@ -22,7 +22,6 @@ class xy:
 
     def tiles(i,more,mini,oldn,spy=False,lvl=0):
         n = len(i.kept)
-        scount = 0
         repeat = True
         if int(n) == int(oldn) or int(n) == 0:
             repeat = False
