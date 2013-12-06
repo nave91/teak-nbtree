@@ -5,7 +5,7 @@ from table import *
 from xy import *
 from xy_lib import *
 
-def xy_proj(z,data,t,tz):
+def xy_proj(z,data,t,tz,check):
     xyobj = xy()
     d  = anyi(data[z])
     if d == len(data[z]):
@@ -19,12 +19,14 @@ def xy_proj(z,data,t,tz):
     c = dist(data[z][inde],data[z][indw],data,z,indep,nump)
     xyobj = xy_proj0(t,inde,indw,c,data,z,x,y,count,tz)
     leaves = {}
-    for n,leaf in enumerate(xyobj.tiles(20,4)):
-        #print leaf
+    for n,leaf in enumerate(xyobj.tiles(20,4,0)):
         leaves[n] = leaf
+    if check == True: print "test row:",xyobj.trow.x,xyobj.trow.y
     ltab = leaftab(leaves)
+    if check == True: printltab(ltab)
     close = nearleaf(ltab,xyobj)
-    #checkie(leaves,ltab,close,data,tz,t)
+    if check  == True: checkie(leaves,ltab,close,data,tz,t)
+    
     return out_reduced(leaves,close)
 
 def xy_proj0(t,east,west,c,data,z,x,y,count,tz):

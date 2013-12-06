@@ -6,19 +6,19 @@ from zeror import *
 from xy_nb import *
 from xy_proj import *
 import sys
-def xy_xvals(data,x,b,f,z,k,m):
+def xy_xvals(data,x,b,f,z,k,m,check=False):
     rows = indexes(data,z)
     s = int(len(rows)/b)
     acc = []
     while x>0:
         shuffled(rows)
         for b1 in range(0,b):
-            acc.append(xy_xval(b1*s,(b1+1)*s,data,rows,f,z,k,m))
+            acc.append(xy_xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,check))
         x=x-1
     for i in sorted(acc):
         print i,
 
-def xy_xval(start,stop,data,rows,f,z,k,m,check=False):
+def xy_xval(start,stop,data,rows,f,z,k,m,check):
     rmax = len(rows)
     test = []
     hypotheses = {}
@@ -33,24 +33,25 @@ def xy_xval(start,stop,data,rows,f,z,k,m,check=False):
         d = rows[r]
         addRow(d,bef)
     for ts in test:
+#        print ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
         ind = data[z].index(ts)#index of test row in data[z]
         l = "__aft"+str(test.index(ts))
-        dafter = xy_proj(bef,data,ind,z)
+        dafter = xy_proj(bef,data,ind,z,check)
         makeTable(colname[z],l)
         for r in range(0,len(dafter)):
             d = dafter[r]
             addRow(d,l)
-            #if check ==True: tableprint(l) #print each leaf table
+        if check ==True: tableprint(l) #print each leaf table
         hypotheses = hypbuild(data,l)
         where = klassAt(l)
         total = 0.0
         for h in hypotheses:
             total += len(data[h])
         want = ts[where]
-        got = xy_nb(ts,data,hypotheses,total,l,k,m)
+        got = xy_nb(ts,data,hypotheses,total,l,k,m,check)
         if check == True: print "want:",want,"got:",got #check what we are expecting and getting
         if want == got: acc+=1.0
-        #sys.exit()
+        if check == True: sys.exit() #exit after a round
     return round(100*acc/len(test),2)
     #print '%0.2f' % round(100*acc/len(test),2),
 
