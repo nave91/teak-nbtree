@@ -32,9 +32,13 @@ def printltab(ltab):
 
 def eucldist(leaf,xyobj):
     d1 = d2 = 0.0
+    #print leaf,"leaffffff"
+    #print xyobj.trow.x,xyobj.trow.y,"x,y"
     d1 = (xyobj.trow.x - leaf[0])**2
     d2 = (xyobj.trow.y - leaf[1])**2
-    return (d1+d2)**0.5
+    d = (d1+d2)**0.5
+    #print d,"ddd"
+    return d
 
 def nearleaf(ltab,xyobj):
     #print "distances from test row to leaves"

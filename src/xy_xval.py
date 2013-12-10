@@ -5,7 +5,9 @@ from table import *
 from zeror import *
 from xy_nb import *
 from xy_proj import *
+from abcd import *
 import sys
+
 def xy_xvals(data,x,b,f,z,k,m,check=False):
     rows = indexes(data,z)
     s = int(len(rows)/b)
@@ -13,12 +15,17 @@ def xy_xvals(data,x,b,f,z,k,m,check=False):
     while x>0:
         shuffled(rows)
         for b1 in range(0,b):
-            acc.append(xy_xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,check))
+            abcd = Abcd()
+            #include this in acc.append() to get accuracy
+            xy_xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,check,abcd) 
+            abcd.header()
+            abcd.report()
         x=x-1
-    for i in sorted(acc):
-        print i,
+        
+    #for i in sorted(acc): #for accuracy
+     #   print i,
 
-def xy_xval(start,stop,data,rows,f,z,k,m,check):
+def xy_xval(start,stop,data,rows,f,z,k,m,check,abcd):
     rmax = len(rows)
     test = []
     hypotheses = {}
@@ -49,11 +56,12 @@ def xy_xval(start,stop,data,rows,f,z,k,m,check):
             total += len(data[h])
         want = ts[where]
         got = xy_nb(ts,data,hypotheses,total,l,k,m,check)
-        if check == True: print "want:",want,"got:",got #check what we are expecting and getting
+        #check what we are expecting and getting
+        if check == True: print "want:",want,"got:",got 
         if want == got: acc+=1.0
         if check == True: sys.exit() #exit after a round
-    return round(100*acc/len(test),2)
-    #print '%0.2f' % round(100*acc/len(test),2),
+        abcd.keep(want,got)
+    #return round(100*acc/len(test),2) #To get accuracy
 
 
 def xvalTest1(test,data,hypotheses):

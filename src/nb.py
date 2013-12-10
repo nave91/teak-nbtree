@@ -3,8 +3,9 @@ from lib import *
 from reader import *
 from xval import *
 from math import *
+from abcd import *
 
-def nb(test,data,hypotheses,z,k,m):
+def nb(test,data,hypotheses,z,k,m,abcd):
     total = 0.0
     acc = 0.0
     for h in hypotheses:
@@ -15,7 +16,8 @@ def nb(test,data,hypotheses,z,k,m):
         got = likelyhood(t,data,total,hypotheses,z,k,m)
         if want == got:
             acc+=1.0
-    return round(100*acc/len(test),2)
+        abcd.keep(want,got)
+    #return round(100*acc/len(test),2)
     #print '%0.2f' % round(100*acc/len(test),2),
 
 def likelyhood(t,data,total,hypotheses,z,k,m):

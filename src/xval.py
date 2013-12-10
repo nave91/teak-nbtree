@@ -9,15 +9,21 @@ def xvals(data,x,b,f,z,k,m):
     rows = indexes(data,z)
     s = int(len(rows)/b)
     acc = []
+    abcd = Abcd()
     while x>0:
         shuffled(rows)
         for b1 in range(0,b):
-            acc.append(xval(b1*s,(b1+1)*s,data,rows,f,z,k,m))
-        x=x-1
-    for i in sorted(acc):
-        print i,
+            abcd = Abcd()
+            #include in acc.append() for acc
+            xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,abcd)
+            abcd.header()
+            abcd.report()
 
-def xval(start,stop,data,rows,f,z,k,m):
+        x=x-1
+    #for i in sorted(acc):
+    #    print i,
+
+def xval(start,stop,data,rows,f,z,k,m,abcd):
     rmax = len(rows)
     test = []
     hypotheses = {}
@@ -40,8 +46,8 @@ def xval(start,stop,data,rows,f,z,k,m):
                 addRow(d,temp)
     #zeror(test, data, hypotheses, z) 
     #xvalTest1(test,data,hypotheses)
-    return nb(test,data,hypotheses,z,k,m)
-
+    #return 
+    nb(test,data,hypotheses,z,k,m,abcd)
 
 def xvalTest1(test,data,hypotheses):
     print "\n=================================="

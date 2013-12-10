@@ -6,7 +6,7 @@ from xy import *
 from xy_lib import *
 
 def xy_proj(z,data,t,tz,check):
-    xyobj = xy()
+    #xyobj = xy()
     d  = anyi(data[z])
     if d == len(data[z]):
         d-=1
@@ -19,7 +19,7 @@ def xy_proj(z,data,t,tz,check):
     c = dist(data[z][inde],data[z][indw],data,z,indep,nump)
     xyobj = xy_proj0(t,inde,indw,c,data,z,x,y,count,tz)
     leaves = {}
-    for n,leaf in enumerate(xyobj.tiles(20,4,0)):
+    for n,leaf in enumerate(xyobj.tiles(20,4,0,0,0)):
         leaves[n] = leaf
     #if check == True: leafprint(leaves)
     if check == True: print "test row:",xyobj.trow.x,xyobj.trow.y
@@ -34,14 +34,17 @@ def xy_proj0(t,east,west,c,data,z,x,y,count,tz):
     #print "+"
     bigger = 1.05
     some = 0.000001
-    xyobj = xy()
+    #xyobj = xy()
     #calculating test row's x and y coordinates
     trow = row(data[tz][t])
-    xyobj.addtrow(trow)
+    #xyobj.addtrow(trow)
     ta = dist(data[tz][t],data[z][east],data,z,indep,nump)
     tb = dist(data[tz][t],data[z][west],data,z,indep,nump)
-    xyobj.trow.x = (ta**2 + c**2 - tb**2) / (2*c + some)
-    xyobj.trow.y = (ta**2 - x[t]**2)**0.5
+    #xyobj.trow.x = (ta**2 + c**2 - tb**2) / (2*c + some)
+    #xyobj.trow.y = (ta**2 - xyobj.trow.x**2)**0.5
+    tx = (ta**2 + c**2 - tb**2) / (2*c + some)
+    ty = (ta**2 - tx**2)**0.5
+    xyobj = xy(t,tx,ty)
     #print xyobj.trow.x,xyobj.trow.y
     for d in data[z]:
         ind = data[z].index(d)
