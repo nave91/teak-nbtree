@@ -15,13 +15,14 @@ def xvals(data,x,b,f,z,k,m):
         for b1 in range(0,b):
             abcd = Abcd()
             #include in acc.append() for acc
-            xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,abcd)
-            abcd.header()
-            abcd.report()
+            #xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,abcd)
+            acc.append(xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,abcd))
+            #abcd.header()
+            #abcd.report()
 
         x=x-1
-    #for i in sorted(acc):
-    #    print i,
+    for i in sorted(acc):
+        print i,
 
 def xval(start,stop,data,rows,f,z,k,m,abcd):
     rmax = len(rows)
@@ -46,8 +47,8 @@ def xval(start,stop,data,rows,f,z,k,m,abcd):
                 addRow(d,temp)
     #zeror(test, data, hypotheses, z) 
     #xvalTest1(test,data,hypotheses)
-    #return 
-    nb(test,data,hypotheses,z,k,m,abcd)
+    return nb(test,data,hypotheses,z,k,m,abcd)
+    #nb(test,data,hypotheses,z,k,m,abcd)
 
 def xvalTest1(test,data,hypotheses):
     print "\n=================================="

@@ -17,7 +17,7 @@ def nb(test,data,hypotheses,z,k,m,abcd):
         if want == got:
             acc+=1.0
         abcd.keep(want,got)
-    #return round(100*acc/len(test),2)
+    return round(100*acc/len(test),2)
     #print '%0.2f' % round(100*acc/len(test),2),
 
 def likelyhood(t,data,total,hypotheses,z,k,m):
