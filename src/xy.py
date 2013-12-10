@@ -24,13 +24,12 @@ class xy:
     def addtrow(i,test):
         i.trow = test
 
-    def tiles(i,more,mini,oldn,oldd,yielde,spy=False,lvl=0):
+    def tiles(i,more,mini,oldn,oldd,spy=False,lvl=0):
         n = len(i.kept)
         repeat = True
         if int(n) == int(oldn) or int(n) == 0:
             repeat = False
             if int(n) != 0:
-                yielde+=1
                 yield i.kept
         oldn = n
         newd = 0
@@ -51,7 +50,6 @@ class xy:
         if repeat == True:
             if n>mini:
                 if n<more:
-                    yielde+=1
                     yield i.kept
                 else:
                     hh = i.__class__(i.trow.row,i.trow.x,i.trow.y)
@@ -71,6 +69,6 @@ class xy:
                                 what = hh
                         what.keep(xyz)
                     for xy in [ll,lh,hl,hh]:
-                        for one in xy.tiles(more,mini,oldn,oldd,yielde,spy,lvl+1):
+                        for one in xy.tiles(more,mini,oldn,oldd,spy,lvl+1):
                             yield one
     
