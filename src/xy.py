@@ -1,5 +1,7 @@
 #! /usr/env python
 from xy_lib import *
+from xy_globfile import *
+from maint import *
 class row:
     def __init__(i,row):
         i.row = row
@@ -43,10 +45,9 @@ class xy:
             #print oldd,newd
             if spy:
                 print '|--'*lvl+str(n),"d:",newd,"xmuymu:",xmu,ymu
-#            if oldd < newd: 
-#                repeat = False
-#                yield i.kept
-            oldd = newd
+            if oldd > newd: 
+                i.xd = oldd = newd
+                i.nearest = i.kept
         if repeat == True:
             if n>mini:
                 if n<more:

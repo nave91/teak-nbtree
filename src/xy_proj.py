@@ -4,7 +4,7 @@ from sys import *
 from table import *
 from xy import *
 from xy_lib import *
-
+from xy_globfile import *
 def xy_proj(z,data,t,tz,check):
     #xyobj = xy()
     d  = anyi(data[z])
@@ -19,9 +19,11 @@ def xy_proj(z,data,t,tz,check):
     c = dist(data[z][inde],data[z][indw],data,z,indep,nump)
     xyobj = xy_proj0(t,inde,indw,c,data,z,x,y,count,tz)
     leaves = {}
-    for n,leaf in enumerate(xyobj.tiles(20,4,0,0)):
+    oldd = 999999
+    for n,leaf in enumerate(xyobj.tiles(20,4,0,oldd)):
         leaves[n] = leaf
     #if check == True: leafprint(leaves)
+    if check == True: print "nearest d",xy_d#,"nearest node",xyobj.nearest
     if check == True: print "test row:",xyobj.trow.x,xyobj.trow.y
     ltab = leaftab(leaves)
     if check == True: printltab(ltab)
