@@ -17,7 +17,7 @@ def xvals(data,x,b,f,z,k,m):
             #include in acc.append() for acc
             xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,abcd)
             #acc.append(xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,abcd))
-            abcd.header()
+#            abcd.header()
             abcd.report()
 
         x=x-1

@@ -19,7 +19,7 @@ def xy_xvals(data,x,b,f,z,k,m,check=False):
             #include this in acc.append() to get accuracy
             xy_xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,check,abcd) 
             #acc.append(xy_xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,check,abcd)) 
-            abcd.header()
+#            abcd.header()
             abcd.report()
         x=x-1
         

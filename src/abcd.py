@@ -42,9 +42,10 @@ class Abcd:
       if (1-pf+pd): g    = 2.0*(1-pf)*pd / (1-pf+pd)
       if (prec+pd): f    = 2.0*prec*pd/(prec+pd)
       if (i.yes + i.no): acc= 1.0*i.yes/(i.yes+i.no)
-      print ('{0:20s} {1:10s} {2:3d} {3:3d} {4:3d} '+ \
-			'{5:3d} {6:3d} {7:3d} {8:3d} {9:3d} '+ \
-      '{10:3d} {11:3d} {12:3d} {13:10s}').format(i.db,
-       i.rx,  n(b + d), n(a), n(b),n(c), n(d), 
-       p(acc), p(pd), p(pf), p(prec), p(f), p(g),x)
+#      print ('{0:20s} {1:10s} {2:3d} {3:3d} {4:3d} '+ \
+#			'{5:3d} {6:3d} {7:3d} {8:3d} {9:3d} '+ \
+#      '{10:3d} {11:3d} {12:3d} {13:10s}').format(i.db,
+#       i.rx,  n(b + d), n(a), n(b),n(c), n(d), 
+#       p(acc), p(pd), p(pf), p(prec), p(f), p(g),x)
+      print x,p(pd),p(prec)
 
