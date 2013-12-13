@@ -17,14 +17,14 @@ def xy_xvals(data,x,b,f,z,k,m,check=False):
         for b1 in range(0,b):
             abcd = Abcd()
             #include this in acc.append() to get accuracy
-            #xy_xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,check,abcd) 
-            acc.append(xy_xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,check,abcd)) 
-            #abcd.header()
-            #abcd.report()
+            xy_xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,check,abcd) 
+            #acc.append(xy_xval(b1*s,(b1+1)*s,data,rows,f,z,k,m,check,abcd)) 
+            abcd.header()
+            abcd.report()
         x=x-1
         
-    for i in sorted(acc): #for accuracy
-        print i,
+    #for i in sorted(acc): #for accuracy
+    #    print i,
 
 def xy_xval(start,stop,data,rows,f,z,k,m,check,abcd):
     rmax = len(rows)
@@ -62,7 +62,7 @@ def xy_xval(start,stop,data,rows,f,z,k,m,check,abcd):
         if want == got: acc+=1.0
         if check == True: sys.exit() #exit after a round
         abcd.keep(want,got)
-    return round(100*acc/len(test),2) #To get accuracy
+    #return round(100*acc/len(test),2) #To get accuracy
 
 
 def xvalTest1(test,data,hypotheses):

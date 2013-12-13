@@ -1,5 +1,10 @@
-#!/usr/env python
 
+
+#!/usr/env python
+#usage: python mmm.py dats/acc_*.dat
+
+#Used to generate min,q1,med,q3,high of the input data which can be 
+#used to generate plot graphs
 from sys import *
 
 file = open(argv[1],'r')
@@ -9,8 +14,6 @@ name = []
 value = []
 maxi = -10
 mini = 9999
-low = []
-high = []
 tmp = []
 
 def line(file):
@@ -30,6 +33,26 @@ def median(i):
         med = i[l/2+1]
     return med
 
+def medind(i):
+    l = len(i)
+    medi = 0.0
+    if l%2 == 0: medi = l/2 
+    else: medi = l/2+1
+    return medi
+
+def lo(i,nedi):
+    temp1 = []
+    for j in range(0,len(i)):
+        if j < nedi:
+            temp1.append(i[j])
+    return temp1
+
+def hi(i,nedi):
+    temp1 = []
+    for j in range(0,len(i)):
+        if j > nedi:
+            temp1.append(i[j])
+    return temp1
 #convert into lists
 while True:
     x = []
@@ -47,11 +70,16 @@ while True:
 #print out as required
 for i in value:
     med = median(i)
-    for j in i:
-        if j < med:
-            low.append(j)
-        else:
-            high.append(j)
+    medi = len(i)/2*1.0
+    low = []
+    high = []
+    low = lo(i,medi)
+    high = hi(i,medi)
+    #for j in range(0,len(i)):
+    #    if j < medi:
+    #        low.append(i[j])
+    #    else:
+    #        high.append(i[j])
     q1 = median(low)
     q3 = median(high)
     tmp.append([min(i),q1,med,q3,max(i)])
