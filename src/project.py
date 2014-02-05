@@ -24,9 +24,9 @@ def project0(east,west,data,z,x,y,count):
         ind = data[z].index(d)
         a = dist(data[z][ind],data[z][east],data,z,indep,nump)
         b = dist(data[z][ind],data[z][west],data,z,indep,nump)
-        if b > c*bigger:
-            return project0(east,ind,data,z,x,y,count)
         if a > c*bigger:
+            return project0(east,ind,data,z,x,y,count)
+        if b > c*bigger:
             return project0(ind,west,data,z,x,y,count)
         #print "."
         x[ind] = (a**2 + c**2 - b**2) / (2*c + some)
