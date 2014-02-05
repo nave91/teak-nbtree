@@ -11,6 +11,6 @@ def xy_projed():
     readCsv(csvfile,argv[2])
     #tableprint(argv[2])
     xy_proj(argv[2],data,4,argv[2])
-    #tableprint(w)
+    tableprint(w)
 
 xy_projed()
