@@ -44,7 +44,7 @@ def xy_xval(start,stop,data,rows,f,z,k,m,check,abcd):
 #        print ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
         ind = data[z].index(ts)#index of test row in data[z]
         l = "__aft"+str(test.index(ts))
-        dafter = xy_proj(bef,data,ind,z,check)
+        dafter = xy_proj(bef,data,ind,z,check)        
         makeTable(colname[z],l)
         for r in range(0,len(dafter)):
             d = dafter[r]

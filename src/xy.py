@@ -26,7 +26,7 @@ class xy:
     def addtrow(i,test):
         i.trow = test
 
-    def tiles(i,more,mini,oldn,oldd,spy=False,lvl=0):
+    def tiles(i,more,mini,oldn,oldd,spy=True,lvl=0):
         n = len(i.kept)
         repeat = True
         if int(n) == int(oldn) or int(n) == 0:
@@ -44,7 +44,7 @@ class xy:
             newd = eucldist(add,i)
             #print oldd,newd
             if spy:
-                print '|--'*lvl+str(n),"d:",newd,"xmuymu:",xmu,ymu
+                print '|--'*lvl+str(n)#,"d:",newd,"xmuymu:",xmu,ymu
             if oldd > newd: 
                 i.xd = oldd = newd
                 i.nearest = i.kept
