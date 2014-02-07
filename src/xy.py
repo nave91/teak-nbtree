@@ -32,6 +32,7 @@ class xy:
         if int(n) == int(oldn) or int(n) == 0:
             repeat = False
             if int(n) != 0:
+                #print "yield"
                 yield i.kept
         oldn = n
         newd = 0
@@ -51,6 +52,7 @@ class xy:
         if repeat == True:
             if n>mini:
                 if n<more:
+                    #print "yield"
                     yield i.kept
                 else:
                     hh = i.__class__(i.trow.row,i.trow.x,i.trow.y)
