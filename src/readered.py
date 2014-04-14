@@ -16,5 +16,5 @@ a = argv[3]
 
 #print "nb-tree"
 xy_xvals(data,5,5,'nb',argv[2],2,1)
-#tableprint(argv[2])
+tableprint(argv[2])
 
