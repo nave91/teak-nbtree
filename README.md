@@ -1,4 +1,5 @@
-#Implementation of Test Essential Assumption Knowledge(TEAK) on an nb-Tree(Tree with leaf nodes as naive bayes classifiers)
+# CS 573 FINAL PROJECT
+## Implementation of Test Essential Assumption Knowledge(TEAK) on an nb-Tree(Tree with leaf nodes as naive bayes classifiers)
 
 * The code is a part of final Project of WVU CS 573 Advanced Data Mining, 2014 under Dr. Tim Menzies. 
 * Most of the code is borrowed from original awk version at https://github.com/timm/auk.
