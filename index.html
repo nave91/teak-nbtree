@@ -129,7 +129,7 @@ want: 2 got: 2
 
 <p>We need to use "precision" and "recall" which are class specific and can be used to evaluate predictors.</p>
 
-<p>Remember <a href="https://github.com/nave91/teak-nbtree/blob/master/src/abcd.py">Abcd.py</a></p>
+<p>Remember <a href="https://github.com/nave91/teak-nbtree/blob/master/src/abcd.py">Abcd.py</a>??</p>
 
 <h2>
 <a name="results" class="anchor" href="#results"><span class="octicon octicon-link"></span></a>Results</h2>
@@ -164,10 +164,42 @@ nb-tree
 
 </code></pre>
 
+</p>
+Accuracy figures of various data sets on nb-tree:
+
+<p><img src="https://raw.githubusercontent.com/nave91/teak-nbtree/master/output/last_report/jpegs/acc_dia.jpeg"></p>
+<p><img src="https://raw.githubusercontent.com/nave91/teak-nbtree/master/output/last_report/jpegs/acc_cmc.jpeg"></p>
+<p><img src="https://raw.githubusercontent.com/nave91/teak-nbtree/master/output/last_report/jpegs/acc_image.jpeg"></p>
+<p><img src="https://raw.githubusercontent.com/nave91/teak-nbtree/master/output/last_report/jpegs/acc_iris.jpeg"></p>
+<p><img src="https://raw.githubusercontent.com/nave91/teak-nbtree/master/output/last_report/jpegs/acc_soy.jpeg"></p>
+<p><img src="https://raw.githubusercontent.com/nave91/teak-nbtree/master/output/last_report/jpegs/acc_wine.jpeg"></p>
+
+For Accuracy,
+
+Good: Image, Iris, Diabetes, Wine
+Bad: Cmc, Soybean
+
+Precision vs Recall figures of various data sets on nb-tree:
+<p><img src="https://raw.githubusercontent.com/nave91/teak-nbtree/master/output/last_report/jpegs/prec_dia.jpeg"></p>
+<p><img src="https://raw.githubusercontent.com/nave91/teak-nbtree/master/output/last_report/jpegs/prec_cmc.jpeg"></p>
+<p><img src="https://raw.githubusercontent.com/nave91/teak-nbtree/master/output/last_report/jpegs/prec_cmctree.jpeg"></p>
+<p><img src="https://raw.githubusercontent.com/nave91/teak-nbtree/master/output/last_report/jpegs/prec_iris.jpeg"></p>
+<p><img src="https://raw.githubusercontent.com/nave91/teak-nbtree/master/output/last_report/jpegs/prec_iristree.jpeg"></p>
+<p><img src="https://raw.githubusercontent.com/nave91/teak-nbtree/master/output/last_report/jpegs/prec_wine.jpeg"></p>
+<p><img src="https://raw.githubusercontent.com/nave91/teak-nbtree/master/output/last_report/jpegs/prec_winetree.jpeg"></p>
+
+Precision and Recall holds good in some cases as does accuracy.
+
+For Precision and Recall,
+
+Good: Wine, Cmc
+Bad: Iris
+
+</p>
 <h2>
 <a name="discussion" class="anchor" href="#discussion"><span class="octicon octicon-link"></span></a>Discussion</h2>
 
-<p>As we can observe, the effectiveness of naive bayes is decreased when the hypothesis is implemented.</p>
+<p>As we can observe, the effectiveness of naive bayes is decreased in few cases and improves sometimes when the hypothesis is implemented.</p>
 
 <p>Many cases are possible:</p>
 
@@ -175,15 +207,15 @@ nb-tree
 <li>Our initial assumption that similar rows are closer on xy-plane may or may not be true.</li>
 <li>The naive bayes is implemented on leaves rather than on nodes which may be decreasing it accuracy.</li>
 <li>In other words, the leaf that we consider as closest for a test row may not be so close?</li>
+<li>UPDATE: This is not valid as the distance calculation is tested in various hypothesis.</li>
 <li>Low frequency class problem?</li>
-<li>Datasets are not effective.</li>
+<li>Datasets may not be effective for this case.</li>
 </ol><h2>
 <a name="future-work" class="anchor" href="#future-work"><span class="octicon octicon-link"></span></a>Future work</h2>
 
 <ul>
 <li><p>I would like to test the hypothesis by running naive bayes at nodes instead of leaves by recursively traversing the tree till I get a good node of similar rows.</p></li>
-<li><p>Also, as the hypotheses is tested only on 2 datasets, I would like to test it on varying sets of data and check its effectiveness.</p></li>
-<li><p>I would also try to calculate "precision" and "recall" to better evaluate predictors and eliminate low frequency class problem.</p></li>
+<li><p>Also, as the hypotheses is tested only on 6 datasets, I would like to test it on varying sets of data and check its effectiveness.</p></li>
 </ul><h2>
 <a name="conclusion" class="anchor" href="#conclusion"><span class="octicon octicon-link"></span></a>Conclusion</h2>
 
